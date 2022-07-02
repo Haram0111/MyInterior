@@ -6,6 +6,9 @@ import App from './App';
 import Interior from './Page/Interior';
 import Login from './Page/Login';
 import Chating from './Page/Chatting';
+import Register from './Page/Register';
+import Board from './Page/Board';
+import NotFound from './Page/NotFound';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 
@@ -18,6 +21,10 @@ root.render(
         <Route path="/interior" element={ <Interior /> }/>
         <Route path="/login" element={ <Login /> }/>
         <Route path="/chating" element={ <Chating /> }/>
+        <Route path = "/Board" element = {<Board/>}/>
+        <Route path = "/Login" element = {<Login/>}/>
+        <Route path = "/Register" element = {<Register/>}/>
+        <Route path = "*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

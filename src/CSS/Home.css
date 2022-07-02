@@ -1,0 +1,20 @@
+.container_home{
+    margin-top: 150px;  margin-left: 15%;
+    width: 70%;    height: 600px;
+    display: flex;
+}
+
+.carouselContainer{
+    width: 60%; height: 100%;
+    background-color: seashell;
+}
+
+.experts{
+    width: 40%; height: 100%;
+    background-color: gray;
+}
+
+.expertsImg{
+    width: 100%;    height: 100%;
+    cursor: pointer;
+}

@@ -1,0 +1,36 @@
+.container_board{
+    width: 680px;   height: 750px;
+    margin: auto;
+    margin-top: 80px;
+    background-color: seashell;
+    padding: 20px;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+.list_board{
+    width: 600px;    height: 100px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 15px;       margin-left: 20px;
+}
+
+.loginType_board{
+    width: 150px; height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;       margin-left: 20px;
+    padding: 10px;
+    border: 2px solid pink;
+    font-size: 14px;
+}
+
+.bg_board{
+    margin-top: -180px;
+    background-size: auto;
+    position: absolute;
+    z-index: -1;
+    filter: blur(5px);
+}
