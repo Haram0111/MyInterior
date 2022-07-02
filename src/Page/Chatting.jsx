@@ -33,7 +33,6 @@ const Chat = () => {
       <input className="test" onChange={(e)=>(setValue(e.target.value))} value={value}/>
       <button onClick={send} style={{width: "100px", height: "50px"}}></button>
     </div>
-
   )
 };
 
