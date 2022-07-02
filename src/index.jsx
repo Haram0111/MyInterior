@@ -5,7 +5,7 @@ import './CSS/index.css';
 import App from './App';
 import Interior from './Page/Interior';
 import Login from './Page/Login';
-import Chating from './Page/Chating';
+import Chating from './Page/Chatting';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 

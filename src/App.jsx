@@ -4,7 +4,7 @@ import {Card, Button, Container, Nav, Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Interior from './Page/Interior';
 import nav from './img/logo.PNG'
-import Chating from "./Page/Chating";
+import Chating from "./Page/Chatting";
 import Login from "./Page/Login";
 import './CSS/App.css';
 

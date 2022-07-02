@@ -1,6 +1,7 @@
-import React, {useState,useEffect} from "react";
+import React, {useState,useEffect, Component} from "react";
 import {Card, Button, Container, Nav, Form} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import nav from '../img/logo.PNG'
 import as2 from '../img/as2.gif';
@@ -9,64 +10,32 @@ import '../CSS/App.css';
 
 function Interior(){
   let Navigate  = useNavigate ();
-  let [val, setVal] = useState("All");
-  console.log(val);
+  let [Intype, setIntype] = useState("All");
+  let [cardInfo, setCardInfo] = useState();
 
-  const cardInfo = [
-    { image: as3, title: "James Bornd", text: "Yeah", type: "free"},
-    { image: as2, title: "dfas", text: "asdf", type: "charge"},
-    { image: as3, title: "asdf", text: "asdf", type: "charge"},
-    { image: as2, title: "asdf", text: "asdf", type: "free" },
-    { image: as2, title: "asdf", text: "asdf", type: "free" },
-    { image: as2, title: "asdf", text: "asdf", type: "free" },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/interiors")
+      .then((result) => {
+        setCardInfo(result.data.result);
+      })
+      .catch((err) => {console.log(err)});
+  }, []);
 
-  let cardList = [];
-
-  const renderCard = (card, index) => {
-    return(
-      <Card style={{ width: '18rem' }} key={index} check={card.type} className="box">
-        <Card.Img variant="top" src={card.image} />
-        <Card.Body>
-        <Card.Title>{card.title}</Card.Title>
-        <Card.Text>
-            {card.text}
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
-    )
-  }
-
-  const renderChargeCard = (card, index) => {
-    return(
-      <Card style={{ width: '18rem' }} key={index} check={card.type} className="box">
-        <Card.Img variant="top" src={card.image} />
-        <Card.Body>
-        <Card.Title>{card.title}</Card.Title>
-        <Card.Text>
-            {card.text}
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
-    )
-  }
-
-  const renderFreeCard = (card, index) => {
-    return(
-      <Card style={{ width: '18rem' }} key={index} check={card.type} className="box">
-        <Card.Img variant="top" src={card.image} />
-        <Card.Body>
-        <Card.Title>{card.title}</Card.Title>
-        <Card.Text>
-            {card.text}
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
-    )
-  }
+  // const renderCard = (card) => {
+  //   return(
+  //     <Card style={{ width: '18rem' }} className="box">
+  //       <Card.Img variant="top" src={card.image} />
+  //       <Card.Body>
+  //       <Card.Title>{card.title}</Card.Title>
+  //       <Card.Text>
+  //           {card.text}
+  //       </Card.Text>
+  //       <Button variant="primary">Go somewhere</Button>
+  //       </Card.Body>
+  //     </Card>
+  //   )
+  // }
   
   return(
     <div>
@@ -86,20 +55,47 @@ function Interior(){
             <Nav.Link onClick={()=>{Navigate('/chating')}} style={ {color: "black"} }>CHATING</Nav.Link>
           </Nav.Item>
         </Nav>
-        <Form.Select value={val} onChange={(e) => setVal(e.target.value)}>
+        <Form.Select onChange={(e) => setIntype(e.target.value)}>
           <option value="All">전체</option>
-          <option value="Charge">유료</option>
-          <option value="Free">무료</option>
+          <option value="charge">유료</option>
+          <option value="free">무료</option>
         </Form.Select>        
-        {val === "All"? <div className="grid">
-          {cardInfo.map(renderCard)}
-        </div> : null}
-        {val === "Charge"? <div className="grid">
-          {cardInfo.map(renderChargeCard)}
-        </div> : null}
-        {val === "Free"? <div className="grid">
-          {cardInfo.map(renderFreeCard)}
-        </div> : null}
+        <div className="grid">
+          {
+            cardInfo&&cardInfo.map((i,a)=>{
+              if(Intype === "All"){
+                return(
+                  <Card style={{ width: '18rem' }} className="box">
+                    <Card.Img variant="top" src={i.image_url} />
+                    <Card.Body>
+                    <Card.Title>{i.description}</Card.Title>
+                    <Card.Text>
+                        {i.description}
+                    </Card.Text>
+                    <Button variant="primary">Go somewhere</Button>
+                    </Card.Body>
+                  </Card>
+                );
+              }
+              else{
+                if(Intype === i.type){
+                  return(
+                    <Card style={{ width: '18rem' }} className="box">
+                      <Card.Img variant="top" src={i.image} />
+                      <Card.Body>
+                      <Card.Title>{i.title}</Card.Title>
+                      <Card.Text>
+                          {i.text}
+                      </Card.Text>
+                      <Button variant="primary">Go somewhere</Button>
+                      </Card.Body>
+                    </Card>
+                  )
+                }
+              }
+            })
+          }
+        </div>
       </Container>
     </div>
     
