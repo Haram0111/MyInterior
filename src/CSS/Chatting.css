@@ -1,0 +1,52 @@
+.chatting {
+    width: 550px;
+    height: 200px;
+    border: 0.5px;
+    border-radius: 3px;
+  }
+  
+  .chat {
+    padding: 0 0 0 19px;
+    margin: 0 0 0 30px;
+    background-clip: padding-box;
+    overflow: overlay;
+    direction: rtl;
+    border-radius: 3px;
+  }
+  
+  .chat:focus-within {
+    outline: none;
+    background-color: #191419;
+    opacity: 0.85;
+    border-radius: 3px;
+    background-clip: content-box;
+  
+  }
+  .chat::-webkit-scrollbar {
+    width: 1vw;
+    background-color: transparent;
+    background: transparent;
+    opacity: 0;
+  }
+  
+  .chat::-webkit-scrollbar-thumb {
+    background-color: #d4cfd3;
+    border-radius: 100px;
+    height: 30%;
+  }
+  
+  .input {
+    border: 0.1px solid black;
+    background: transparent;
+    border-radius: 3px;
+    position: fixed;
+    direction:ltr;
+  }
+  
+  .input:focus {
+    outline: none;
+    background-color: #191419;
+    opacity: 0.85;
+    border-radius: 3px;
+  }
+  
